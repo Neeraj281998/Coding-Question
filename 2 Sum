@@ -1,0 +1,9 @@
+    def twoSum(self, nums, target) :
+        memo={}
+        for i in range (len(nums)):
+            difference=target-nums[i]
+            if difference in  memo:
+                return [i,memo[difference]]
+            else:
+                memo[nums[i]]=i
+        return []
