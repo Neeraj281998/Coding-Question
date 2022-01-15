@@ -1,0 +1,25 @@
+#--------------------- Method 1
+# O(N)  space O(N)
+
+def maxProfit(self, prices: List[int]) -> int:
+        high=[0]*len(prices)
+        high[-1]=prices[-1]
+        maxx=0
+        for i in range(len(prices)-2,-1,-1):
+            if prices[i]>high[i+1]:high[i]=prices[i]
+            else:high[i]=high[i+1]
+        for i in range(len(prices)):
+            maxx=max(maxx,high[i]-prices[i])
+
+        return maxx
+  
+#-------------------Method 2
+# O(N) and space O(1)
+def maxProfit(self, prices: List[int]) -> int:
+          maxProfit=0
+          minSoFar=prices[0]
+          for i in prices:
+              minSoFar=min(minSoFar,i)
+              profit=i-minSoFar
+              maxProfit=max(profit,maxProfit)
+          return maxProfit
