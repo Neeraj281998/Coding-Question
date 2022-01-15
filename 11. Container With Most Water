@@ -1,0 +1,13 @@
+   
+   
+   
+   def maxArea(self, height: List[int]) -> int:
+        max_container=0
+        left_bound=0
+        right_bound=len(height)-1
+        while left_bound<right_bound:
+            total_area=(right_bound-left_bound)*min(height[left_bound],height[right_bound])
+            if total_area>max_container:max_container=total_area
+            if height[right_bound]<height[left_bound]:right_bound-=1
+            else:left_bound+=1
+        return max_container
