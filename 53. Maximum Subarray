@@ -1,0 +1,7 @@
+    def maxSubArray(self, nums: List[int]) -> int:
+        cur=nums[0]
+        maxx=nums[0]
+        for i in nums[1:]:
+            cur=max(i,cur+i)
+            maxx=max(maxx,cur)
+        return maxx
