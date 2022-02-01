@@ -1,0 +1,19 @@
+def uniqueCharacters(string):
+    checker = 0
+    for i in range(len(string)):
+        bitAtIndex = ord(string[i]) - ord('a')
+        if ((bitAtIndex) >=0):
+            xx=1 << bitAtIndex
+            yy=(checker & ((1 << bitAtIndex)))
+            if ((checker & ((1 << bitAtIndex))) > 0):
+                return False
+            checker = checker | (1 << bitAtIndex)
+    return True
+     
+input = "aba"
+ 
+print(uniqueCharacters(input))
+
+
+
+
