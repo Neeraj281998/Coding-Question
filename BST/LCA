@@ -1,0 +1,15 @@
+'''
+Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST
+'''
+
+def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        small=min(p.val,q.val)
+        large=max(p.val,q.val)
+        while root:
+            if large<root.val:
+                root=root.left
+            elif small>root.val:
+                root=root.right
+            else:
+                return root
+        return None 
