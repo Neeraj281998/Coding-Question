@@ -1,0 +1,18 @@
+ '''
+ Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+ '''
+ 
+ def productExceptSelf(self, nums: List[int]) -> List[int]:
+        result=[]
+        if (len(nums)<1):
+            return result
+        product=1
+        for i in range(len(nums)):
+            result.append(nums[i]*product)
+            product*=nums[i]
+        product=1
+        for i in range(len(result)-1,0,-1):
+            result[i]=result[i-1]*product
+            product*=nums[i]
+        result[0]=product
+        return result
