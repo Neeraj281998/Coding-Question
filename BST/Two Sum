@@ -1,0 +1,16 @@
+'''
+Given the root of a Binary Search Tree and a target number k, return true if there exist two elements in the BST such that their sum is equal to the given target.
+'''
+
+class Solution:
+    def __init__(self):
+        self.memo = {}
+    def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+            if root==None:
+                return False
+            dif=k-root.val
+            if dif in self.memo:
+                return True
+            self.memo[root.val]=root.val
+            return self.findTarget(root.left,k) or self.findTarget(root.right,k)
+    
