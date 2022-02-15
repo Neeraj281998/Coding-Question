@@ -1,0 +1,36 @@
+'''
+Given the root of a Binary Search Tree (BST), return the minimum absolute difference between the values of any two different nodes in the tree.
+'''
+METHOD 1:
+#Using extra Space array
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        arr=[]
+        ans=float('inf')
+        def inorder(root):
+            if root.left:
+                inorder(root.left)
+            arr.append(root.val)
+            if root.right:
+                inorder(root.right)
+        inorder(root)
+        for i in range(len(arr)-1):
+            ans=min(abs(arr[i+1]-arr[i]),ans)
+        return ans
+
+
+
+METHOD 2:
+#Storing the previous value
+class Solution:
+    def __init__(self):
+        self.prev=None
+        self.ans=float('inf')
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 
+        self.getMinimumDifference(root.left)
+        if self.prev!=None:
+            self.ans=min(abs(root.val-self.prev.val),self.ans)
+        self.prev=root
+        self.getMinimumDifference(root.right)
+        return self.ans
