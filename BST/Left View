@@ -1,0 +1,18 @@
+#  Using preOrder in the View
+
+
+def LeftView(root):
+    memo={}                                           #Adding the first value appear on that level 
+    result=[]
+    def printRightView(root,level):
+        if root==None:
+            return
+        if level not in memo:                         #IF that level in memo doesn't have data ___Then add data there
+            memo[level]=root.data
+        printRightView(root.left,level+1)             
+        printRightView(root.right,level+1)
+        
+    printRightView(root,0)
+    for data in memo.values():
+        result.append(data)
+    return result
