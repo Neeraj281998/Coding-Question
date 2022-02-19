@@ -1,0 +1,22 @@
+Method 1:
+#Fast Solution
+def duplicates(self, arr, n):  	
+    	data=Counter(arr)
+    	result=[item for item in data if data[item]>1]
+    	result.sort()
+        return result if result!=[] else [-1]
+
+
+
+Method 2:
+
+def duplicates(self, arr, n): 
+    	result=[]
+    	for i in arr:
+    	    numCount=arr.count(i)
+    	    
+    	    if numCount>1:
+    	        if result.count(i)==0:
+    	            result.append(i)
+    	    result.sort()
+    	return result if result!=[] else [-1]
