@@ -1,0 +1,13 @@
+#Counting edges for calculating the diameter
+
+def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        self.maxx=0
+        def dsf(root):
+            if root==None:
+                return -1
+            left=dsf(root.left)
+            right=dsf(root.right)
+            self.maxx=max((left+1)+(right+1),self.maxx)
+            return max(left+1,right+1)
+        dsf(root)
+        return self.maxx
