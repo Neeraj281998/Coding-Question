@@ -1,0 +1,29 @@
+#GFG
+#When the class is not there.....So we are creating preOrder array
+
+	def sortedArrayToBST(self, nums):
+	    data=[]
+	    self.traverse(nums,data,0,len(nums)-1)
+	    return data
+	def traverse(self,arr,data,low,high):
+	    if low>high:
+	        return
+	    mid=(low+high)//2
+	    data.append(arr[mid])
+	    self.traverse(arr,data,low,mid-1)
+	    self.traverse(arr,data,mid+1,high)
+      
+      
+#----------------------------------------------------------------------------
+
+#creating the BST Tree from Array
+
+def sortedArrayToBST(nums):
+  if not nums:
+    return 
+  mid=(len(nums))//2
+  root=Node(nums[mid])
+  root.left=sortedArrayToBST(nums[:mid])
+  root.right=sortedArrayToBST(nums[mid+1:])
+  
+  return root
