@@ -1,0 +1,17 @@
+class Solution:
+    
+    #Function to return the diameter of a Binary Tree.
+    maxx=0
+    def dfs(self,root):
+        if not root:
+            return 0
+        
+        left=self.dfs(root.left)
+        right=self.dfs(root.right)
+        self.maxx=max(self.maxx,left+right+1)
+        return max(left,right)+1
+    
+    def diameter(self,root):
+        # Code here
+        self.dfs(root)
+        return self.maxx
