@@ -1,0 +1,6 @@
+#Height of the BST
+
+def hight(root):
+  if root==None:
+    return 0
+  return max(hight(root.left),hight(root.right))+1
