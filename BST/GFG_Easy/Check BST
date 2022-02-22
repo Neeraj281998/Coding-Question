@@ -1,0 +1,32 @@
+#METHOD 1:
+
+class Solution:
+    
+    #Function to check whether a Binary Tree is BST or not.
+    def __init__(self):
+        self.temp=[]
+    def isBST(self, root):
+        self.inOrder(root)
+        for i in range(1, len(self.temp)):
+            if self.temp[i-1] >=self.temp[i]:
+                return 0
+        return 1
+    def inOrder(self,root):
+        if root is None:
+            return
+        self.inOrder(root.left)
+        self.temp.append(root.data)
+        self.inOrder(root.right)
+        
+        
+ #METHOD 2
+ 
+ 
+ def isBST(self, root):
+        return self.helper(root,float('-inf'),float('inf'))
+    def helper(self,root,minVal,maxVal):
+        if root is None:
+            return True
+        if root.data<=minVal or root.data>=maxVal:
+            return False
+        return self.helper(root.left,minVal,root.data) and self.helper(root.right,root.data,maxVal) 
