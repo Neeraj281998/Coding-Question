@@ -1,0 +1,19 @@
+METHOD 1:
+
+class Solution:
+    def MissingNumber(self,array,n):
+        arraySum=sum(array)
+        totalSum=0
+        for i in range(1,n+1):
+            totalSum+=i
+        return totalSum-arraySum
+        
+        
+  
+ METHOD 2:
+ 
+ 
+ def MissingNumber(self,array,n):
+    total=n*(n+1)//2
+    return total-sum(array)
+ 
