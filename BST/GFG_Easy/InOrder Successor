@@ -1,0 +1,18 @@
+'''
+Given a BST, and a reference to a Node x in the BST. Find the Inorder Successor of the given node in the BST.
+'''
+
+
+
+class Solution:
+    # returns the inorder successor of the Node x in BST (rooted at 'root')
+    
+    def inorderSuccessor(self, root, x,):
+        successor=None
+        while (root!=None):
+            if (x.data>=root.data):
+                root=root.right
+            else:
+                successor=root
+                root=root.left
+        return successor
