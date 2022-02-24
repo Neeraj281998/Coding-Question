@@ -1,0 +1,62 @@
+Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.
+(i.e., from left to right, then right to left for the next level and alternate between).
+
+
+METHOD 1:
+
+def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        cur=[]
+        lvlD=[]
+        result=[]
+        arr=[]
+        cur.append(root)
+        flag=True
+        while (len(cur)>0):
+            temp=cur.pop(-1)
+            arr.append(temp.val)
+            if flag:
+                if temp.left:
+                    lvlD.append(temp.left)
+                if temp.right:
+                    lvlD.append(temp.right)
+            else:
+                if temp.right:
+                    lvlD.append(temp.right)
+                if temp.left:
+                    lvlD.append(temp.left)
+            if len(cur)==0:
+                if arr!=[]:
+                    result.append(arr)
+                arr=[]
+                flag=not flag
+                cur,lvlD=lvlD,cur
+        return result
+        
+   
+   METHOD 2:
+   
+   def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return 
+        result=[[]]
+        level=0
+        self.helper(root,result,level)
+        return result
+        
+        
+    def helper(self,root,result,lvl):
+        if not root:
+            return 
+        if len(result)<lvl+1:
+            result.append([])
+        
+        if lvl%2==1:
+            result[lvl].insert(0,root.val)
+        else:
+            result[lvl].append(root.val)
+        
+        self.helper(root.left,result,lvl+1)
+        self.helper(root.right,result,lvl+1)
+
