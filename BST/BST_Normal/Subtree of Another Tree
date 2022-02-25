@@ -1,0 +1,17 @@
+class Solution:
+    def isSubtree(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+        if not root2:
+            return True
+        if not root1:
+            return False
+        if self.findNode(root1,root2):
+            return True
+        return self.isSubtree(root1.left,root2) or self.isSubtree(root1.right,root2)
+            
+            
+    def findNode(self,root1,root2):
+        if not root1 and not root2:
+            return True
+        if not root1 or not root2 or root1.val!=root2.val:
+            return False
+        return self.findNode(root1.left,root2.left) and self.findNode(root1.right,root2.right)
