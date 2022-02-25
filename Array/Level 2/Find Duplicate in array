@@ -1,0 +1,21 @@
+METHOD 1:
+
+def duplicates(self, arr, n): 
+    	result=[]
+    	for i in range(n):
+    	    nums=arr.count(arr[i])
+    	    
+    	    if nums>1:
+    	        if result.count(arr[i])==0:
+    	            result.append(arr[i])
+    	result.sort()
+    	return result if result!=[] else [-1]
+      
+      
+METHOD 2:
+
+def duplicates(self, arr, n): 
+    	memo=Counter(arr)
+    	result=[item for item in memo if memo[item]>1]
+    	return result if result!=[] else [-1]
+    	    
