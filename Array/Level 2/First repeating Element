@@ -1,0 +1,9 @@
+Time comp == O(N)
+SPACE     == O(N)
+
+ def firstRepeated(self,arr, n):
+        memo=Counter(arr)
+        for i in range(n-1):
+            if memo[arr[i]]>1:
+                return i+1
+        return -1
