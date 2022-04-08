@@ -1,0 +1,52 @@
+#EXAMPLE
+
+
+class BST:
+    def __init__(self,val):
+        self.val=val
+        self.right=None
+        self.left=None
+
+A=BST('A')
+B=BST('B')
+C=BST('C')
+D=BST('D')
+E=BST('E')
+F=BST('F')
+
+A.left=B
+A.right=C
+B.left=D
+B.right=E
+C.right=F
+
+
+
+#iteration
+
+# def DFS(root):
+#     if root==None:
+#         return
+#     stack=[root]
+#     arr=[]
+#     while (len(stack)>0):
+#         current=stack.pop()
+#         arr.append(current.val)
+#         if current.right:
+#             stack.append(current.right)
+#         if current.left:
+#             stack.append(current.left)
+#     return arr
+
+
+#recursive
+
+def DFS(root):
+    if not root:
+        return []
+    leftSide=DFS(root.left)
+    rightSide=DFS(root.right)
+    return [root.val]+leftSide+rightSide
+
+print(DFS(A))
+
