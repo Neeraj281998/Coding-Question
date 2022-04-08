@@ -1,0 +1,71 @@
+class BST:
+    def __init__(self,val):
+        self.val=val
+        self.right=None
+        self.left=None
+
+A=BST('A')
+B=BST('B')
+C=BST('C')
+D=BST('D')
+E=BST('E')
+F=BST('F')
+
+A.left=B
+A.right=C
+B.left=D
+B.right=E
+C.right=F
+
+        #     A
+        #    / \
+        #   B   C
+        # /  \    \
+    #    D    E    F
+
+
+#Finding the Value using the Depth First Search    Iterative Way
+
+
+def findDFSIterative(root,target):
+    stack=[root]
+    while(len(stack)>0):
+        current=stack.pop()
+        if current.val==target:
+            return True
+        if current.right:
+            stack.append(current.right)
+        if current.left:
+            stack.append(current.left)
+    return False
+
+# print(findDFSIterative(A,'A'))    
+
+def findDFSRec(root,target):
+    if not root:
+        return False
+    if root.val==target:
+        return True
+    return findDFSRec(root.left,target) or findDFSRec(root.right,target) 
+
+print(findDFSRec(A,'C'))
+
+
+
+
+#Finding the Value using Breath FIrst Search        Iterative way
+# def findBST(root,target):
+#     stack=[root]
+#     while (len(stack)>0):
+#         current=stack.pop()
+#         if current.val==target:
+#             return True
+#         if current.left:
+#             stack.insert(0,current.left)
+#         if current.right:
+#             stack.insert(0,current.right)
+#     return False
+
+# print(findBST(A,'A'))
+
+            
