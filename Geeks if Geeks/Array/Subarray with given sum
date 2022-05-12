@@ -1,0 +1,22 @@
+'''
+Given an unsorted array A of size N that contains only non-negative integers, find a continuous sub-array which adds to a given number S.
+
+In case of multiple subarrays, return the subarray which comes first on moving from left to right.
+'''
+
+
+
+    def subArraySum(self,arr, n, s): 
+       #Write your code here
+        index=0
+        start=0
+        end=n
+        count=0
+        for i in range(len(arr)):
+            count+=arr[i]
+            while count>s:
+               count-=arr[index]
+               index+=1
+            if count==s:
+                return [index+1,i+1]
+        return [-1]
