@@ -1,0 +1,9 @@
+Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. Find the missing element
+
+    def MissingNumber(self,array,n):
+        # code here
+        count=0
+        total=sum(array)
+        for i in range(n+1):
+            count+=i
+        return count-total
