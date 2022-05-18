@@ -1,0 +1,44 @@
+Given a matrix of m * n elements (m rows, n columns), return all elements of the matrix in spiral order.
+
+
+
+
+A=[[1,2,3,4]
+   ]
+def spiralOrder(A,C,R):
+	top=0
+	bottom=R-1
+	left=0
+	right=C-1
+
+	result=[]
+	while(top<=bottom and left<=right):
+		i=left
+		while(i<=right):
+			result.append(A[top][i])
+			i+=1
+		top+=1
+		i=top
+		while (i<=bottom):
+			result.append(A[i][right])
+			i+=1
+		right-=1
+		if(top<=bottom):
+			i=right
+			while(i>=left):
+				result.append(A[bottom][i])
+				i-=1
+			bottom-=1
+		if(left<=right):
+			i=bottom
+			while(i>=top):
+				result.append(A[i][left])
+				i-=1
+			left+=1
+
+	return result
+
+print(spiralOrder(A,4,1))
+	
+
+
