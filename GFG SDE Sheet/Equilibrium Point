@@ -4,6 +4,10 @@ Equilibrium Point in an array is a position such that the sum of elements before
 Note: Retun the index of Equilibrium point. (1-based index)
 
 
+
+
+---------------------------------METHOD 1------------------------------------------
+
     def equilibriumPoint(self,A, N):
         # Your code here
         #1  3 5  2  2
@@ -26,4 +30,22 @@ Note: Retun the index of Equilibrium point. (1-based index)
         for i in range(1,len(A)-1):
             if left[i-1]==right[i+1]:
                 return i+1
+        return -1
+
+---------------------------------METHOD 2------------------------------------------
+def equilibriumPoint(self,A, N):
+        # Your code here
+        #1  3 5  2  2
+        # 1 4 9 11 13
+        #13 12 9 4 2
+        totalSum=0
+        for i in A:
+            totalSum+=i
+        
+        leftSum=0
+        for i in range(len(A)):
+            totalSum-=A[i]
+            if leftSum==totalSum:
+                return i+1
+            leftSum+=A[i]
         return -1
