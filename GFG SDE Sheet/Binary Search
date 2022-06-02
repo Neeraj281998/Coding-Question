@@ -1,0 +1,18 @@
+Given a sorted array of size N and an integer K, find the position at which K is present in the array using binary search.
+
+
+	def binarysearch(self, arr, n, k):
+		# code here
+		left=0
+		right=len(arr)-1
+		
+		while left<=right:
+		    mid=(left+right)//2
+		    
+		    if arr[mid]==k:
+		        return mid
+		    if k<arr[mid]:
+		        right=mid-1
+		    else:
+		        left=mid+1
+		return -1
