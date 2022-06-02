@@ -1,0 +1,29 @@
+Given an array of N integers. Find the first element that occurs atleast K number of times.
+
+#User function Template for python3
+from collections import Counter
+
+class Solution:
+    def firstElementKTime(self,  a, n, k):
+       
+ ---------------------# Solution 1----------------------------------------
+        memo=Counter()
+        for i in a:
+            memo[i]+=1
+            if memo[i]==k:
+                return i
+        return -1
+  -----------------------# Solution 2----------------------------------------------
+        # code here
+        # memo={}
+        # for i in range(n):
+        #     if a[i] not in memo:
+        #         memo[a[i]]=1
+        #         if  memo[a[i]]==k:
+        #             return a[i]
+        #     else:
+        #         memo[a[i]]+=1
+        #         if  memo[a[i]]==k:
+        #             return a[i]
+        # return -1
+            
