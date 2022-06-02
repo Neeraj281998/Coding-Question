@@ -1,0 +1,15 @@
+Given an array arr[] of positive integers of size N. Reverse every sub-array group of size K.
+
+
+
+def reverseInGroups(self, arr, N, K):
+		# code here
+        i=0
+        while i<N:
+            start=i
+            end=min(i+K-1,N-1)
+            while start<=end:
+                arr[start],arr[end]=arr[end],arr[start]
+                start+=1
+                end-=1
+            i+=K
