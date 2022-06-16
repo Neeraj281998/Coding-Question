@@ -1,0 +1,18 @@
+#Need to find the target sum 
+# Element in array can be used multiple time
+
+def cumSum(target,arr,memo={}):
+    if target in memo:
+        return memo[target]
+    if target==0:
+        return True
+    if target<0:
+        return False
+    for i in arr:
+        if(cumSum(target-i,arr))==True:
+            memo[target]=True
+            return True
+    memo[target]=False
+    return False
+
+print(cumSum(300,[7,14,30]))
